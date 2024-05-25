@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.sidebar {
+    position: fixed;
+    flex-direction: column;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 60px;
+    background-color: #333;
+    overflow-x: hidden;
+    transition: width 1s;
+    z-index: 1000;
+}
+
+.sidebar-icon {
+    max-width: 40px;
+    max-height: 40px;
+    margin-right: 20px;
+    padding: 10px;
+}
+
+.sidebar:hover {
+    width: 160px;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.menu li::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.menu li img {
+    margin-right: 10px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: white;
+}
+
+.menu li:hover {
+    background-color: #575757;
+}
+
+
+.content {
+    margin-left: 10%;
+    padding: 20px;
+    transition: margin-left 2s, width 2s;
+    width: 80%;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.sidebar:hover ~ .content {
+    margin-left: 160px;
+    width: calc(100% - 190px);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    z-index: 999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInOut 2s forwards;
+}
+
+.overlay img {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    animation: blink 1s infinite alternate, fadeOut 2s forwards;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInOut {
+    0% {
+        background-color: rgba(255, 255, 255, 0);
+    }
+    50% {
+        background-color: rgba(255, 255, 255, 0.793);
+    }
+    100% {
+        background-color: rgba(255, 255, 255, 0);
+        display: none;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.sidebar:hover ~ .overlay {
+    display: flex;
+}
+
+
+
